@@ -7,8 +7,6 @@ clc
 
 margin=20; %%% threshold for clustering. 
 
-%%% Reading the Patterns 
-opt.read='C:\Users\Kavir\Desktop\demo\1\Final_Project_Code\read\';
 
 %%% Creating the mask %%%
 I1=[];
@@ -21,8 +19,9 @@ H=1600;
 W=2560;
 d=5;
 
-M1=imread([opt.read,'capture_1.bmp']);
-M2=imread([opt.read,'capture_2.bmp']);
+%%%% Creating the mask
+M1=imread('capture_1.bmp');
+M2=imread('capture_2.bmp');
 Mask=imbinarize(M1-M2);
 
 %% Creating the Hamlitonian Patterns %%
@@ -35,12 +34,12 @@ for i=1:2
             
             case 1
                 
-                m1=imread([opt.read,'camera',num2str(i),num2str(j),'.bmp']);
+                m1=imread(['camera',num2str(i),num2str(j),'.bmp']);
                 I1(:,:,j)=m1.*uint8(Mask);
                 
             case 2
                 
-                m1=imread([opt.read,'camera',num2str(i),num2str(j),'.bmp']);
+                m1=imread(['camera',num2str(i),num2str(j),'.bmp']);
                 I2(:,:,j)=m1.*uint8(Mask);
         end
     end
@@ -286,9 +285,6 @@ for i=1:num_matches
 end
 
 %% Start
-
-addpath(genpath('_drivers'));
-addpath(genpath('_externalcode'));
 
 % Folder names
 param.saveFolder = datestr(now, 'yyyy.mm.dd_HH.MM.SS');
