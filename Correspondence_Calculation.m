@@ -2,11 +2,10 @@
 %%%% In this code the Hamiltonina Patterns are created %%%%
 %%%% Then, the correspondences are found using the scheme explained int the
 %%%% paper. At last 3D reconstruction is done using triangulation. 
+
 clear all
 clc
-
-margin=20; %%% threshold for clustering. 
-
+margin=40; %%% threshold for clustering. 
 
 %%% Creating the mask %%%
 I1=[];
@@ -296,6 +295,9 @@ param.modelFile = [param.saveFolder,'model3d']; % output 3D reconstructed model
 
 disp('Performing 3D reconstruction...');
 % Can downsample points for faster 3D reconstruction
+
+% addpath(genpath('_drivers'));
+% addpath(genpath('_externalcode'));
 
 %%% loading the calibrated projector and camera
 projector=(load('projector.mat'));
